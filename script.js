@@ -17,13 +17,15 @@ const toggleMenu = function () {
     console.log(nav.getBoundingClientRect().right);
     nav.nextElementSibling.style.right = "0";
     nav.nextElementSibling.setAttribute("display", "on");
-    console.log(nav.getBoundingClientRect().width);
+
     nav.style.right = `${
       nav.nextElementSibling.getBoundingClientRect().width -
       nav.getBoundingClientRect().width
     }px`;
+    document.body.classList.add("stop-scrolling");
   } else {
     nav.nextElementSibling.style.right = "-100%";
+    document.body.classList.remove("stop-scrolling");
     nav.nextElementSibling.setAttribute("display", "off");
     nav.style.right = `${nav.getBoundingClientRect().width}px`;
   }
